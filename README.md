@@ -131,6 +131,7 @@
 这里有个很不错的 Book Review，是一个小哥讲了《DDIA》每一章的概述，作者很用心。
 全英文的，在油管可以看到。地址是：
 [https://www.youtube.com/watch?v=PdtlXdse7pw&list=PL4KdJM8LzAMecwInbBK5GJ3Anz-ts75RQ](https://www.youtube.com/watch?v=PdtlXdse7pw&list=PL4KdJM8LzAMecwInbBK5GJ3Anz-ts75RQ)
+
 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1640427269497-f6ed35f7-26ee-48df-9c48-0a5ce4a98c86.png)
 
 ### MIT6.824
