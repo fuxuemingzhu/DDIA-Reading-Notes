@@ -2,11 +2,35 @@
 
 本仓库是《数据密集型应用系统设计》精华整理，字数为原书的 1/5 左右。图文并茂，适合阅读。
 
-这是一本什么书？值得读吗？请看下文。
+# 目录
+
+ [**第一章：可靠性，可扩展性，可维护性**](chapter1.md) 
+
+ [**第二章：数据模型与查询语言**](chapter2.md) 
+
+ [**第三章：存储与检索**](chapter3.md) 
+
+ [**第四章：数据编码与演化**](chapter4.md) 
+
+ [**第五章：数据复制**](chapter5.md) 
+
+ [**第六章：分区**](chapter6.md) 
+
+ [**第七章：事务**](chapter7.md) 
+
+ [**第八章：分布式系统的挑战**](chapter8.md) 
+
+ [**第九章：一致性与共识**](chapter9.md) 
+
+ [**第十章：批处理**](chapter10.md) 
+
+ [**第十一章：流处理**](chapter11.md) 
+
+ [**第十二章：数据系统的未来**](chapter12.md) 
 
 # 推荐
 
-**《数据密集型应用系统设计》**，英文名称是**《Designing Data-Intensive Application》** ，也被简称为 **DDIA**。
+**《数据密集型应用系统设计》**，英文名称是 **《Designing Data-Intensive Application》**  ，也被简称为 **DDIA**。
 这是本神书，豆瓣评分高达 9.7 分。
 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1640422511100-c244e105-53f4-4716-b7ad-8581cb21218f.png)
 这本书的适合所有后台开发工程师、大数据工程师，也很适合面试前复习系统设计的同学。
@@ -92,7 +116,7 @@
 - 负雪明烛的读书笔记：[数据密集型应用系统设计](https://www.yuque.com/fuxuemingzhu/cdpqne?view=doc_embed)
 - 《数据密集型应用系统设计》纸质书（翻译水平比开源在线阅读版好很多，**强烈建议买书**）：[京东购买链接](https://union-click.jd.com/jdc?e=&p=JF8BAMIJK1olXDYCV1tfDkwUBl9MRANLAjZbERscSkAJHTdNTwcKBlMdBgABFksUBm0OHFgQQl9HCANtcz9TdjBcE0F1HE57VzUCSQhgfmx-a1cZbQcyV19dDUkeAW4BEmslXQEyAjBdCUoWAm4MH14dbQcyVFlYCU4UAWsME1kQWDYFVFdt0c6528WTzPKqi7SoZG5tC3snM284GGtXMw4CBl1YW0IQAjtfTl4dCQJRXAxbAR5CBTwBTwwcXQ5RZFxcCU8eMw)
 
-![image.png](https://picture-bed-1251805293.file.myqcloud.com/1640423370576-4df0183f-c521-4bba-96c9-19bff3f684ac.png)
+<img src="https://picture-bed-1251805293.file.myqcloud.com/1640423370576-4df0183f-c521-4bba-96c9-19bff3f684ac.png" alt="image.png" style="zoom:50%;" />
 
 ## 辅助资料
 
