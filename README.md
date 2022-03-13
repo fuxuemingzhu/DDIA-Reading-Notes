@@ -28,6 +28,8 @@
 
  [**第十二章：数据系统的未来**](chapter12.md) 
 
+也可以在语雀上阅读：[《数据密集型应用系统设计》读书笔记](https://www.yuque.com/fuxuemingzhu/cdpqne)
+
 # 推荐
 
 **《数据密集型应用系统设计》**，英文名称是 **《Designing Data-Intensive Application》**  ，也被简称为 **DDIA**。
