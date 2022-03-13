@@ -1,5 +1,7 @@
 作者：负雪明烛
-时间：2021 年 9 月 20 日![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631500939112-60129ead-12e1-498a-ac5b-4fad1deb5f4b.png)
+时间：2021 年 9 月 20 日
+
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631500939112-60129ead-12e1-498a-ac5b-4fad1deb5f4b.png)
 本章介绍了传统关系型数据库与“NoSQL”数据库的**存储引擎**。
 我们会研究两大类存储引擎：**日志结构（log-structured）** 的存储引擎，以及**面向页面（page-oriented）** 的存储引擎（例如B树)。
 
@@ -68,7 +70,7 @@ $ cat database
 - 键值存储与在大多数编程语言中可以找到的**字典（dictionary）**类型非常相似，通常字典都是用**散列映射（hash map）**（或**哈希表（hash table）**）实现的。
 
 假设我们的数据存储只是一个**追加写入**的文件，最简单的索引策略就是：保留一个内存中的哈希映射，其中每个键都映射到一个数据文件中的字节偏移量，指明了可以找到对应值的位置
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631504263039-bde618ea-6f06-4afd-9616-ec9209dadf10.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631504263039-bde618ea-6f06-4afd-9616-ec9209dadf10.png)
 
 - 新的键值写入文件时，还要更新散列映射。
 - 查找一个值时，使用哈希映射来查找数据文件中的偏移量，**寻找（seek）** 该位置并读取该值。
@@ -80,7 +82,7 @@ $ cat database
 - 然后，我们就可以对这些段进行**压缩（compaction）。**
 - 压缩意味着在日志中丢弃重复的键，只保留每个键的最近更新。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631504470200-56a201f0-2458-4c76-a9c1-2e5eacdd6604.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631504470200-56a201f0-2458-4c76-a9c1-2e5eacdd6604.png)
 也可以把多个段的内容压缩合并到一起。
 
 - 段被写入后永远不会被修改，所以合并的段被写入一个新的文件。
@@ -88,7 +90,7 @@ $ cat database
 - 合并过程完成后，我们将读取请求转换为使用新的合并段而不是旧段 —— 然后可以简单地删除旧的段文件。
 - 每个段都有自己的内存散列表，将键映射到文件偏移量。查找键时，依次遍历所有的散列表。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631504526328-6bf85703-18cf-48a2-b53f-8783177c9d9a.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631504526328-6bf85703-18cf-48a2-b53f-8783177c9d9a.png)
 重要的问题：
 
 1. **_文件格式_**
@@ -125,10 +127,10 @@ $ cat database
 
 SSTable 与散列索引日志段相比，有几个很大的优势：
 
-1. 合并段是简单而高效的，即使文件大于可用内存。方法类似于归并排序。![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632450715550-ece6aa64-ea53-41ba-a0a1-89a7df171b0a.png)
+1. 合并段是简单而高效的，即使文件大于可用内存。方法类似于归并排序。![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632450715550-ece6aa64-ea53-41ba-a0a1-89a7df171b0a.png)
    1. 如果在几个输入段中出现相同的键，该怎么办？
       1. 答：保留最近段的值，并丢弃旧段中的值。
-2. 为了在文件中找到一个特定的键，你**不再需要保存内存中所有键**的索引。因为是有序的，可以先查找出键所处的范围，然后就找到这个键所在的偏移量的区间。比如可以从 handbag 和 handsome 的偏移量找到 handiwork 的区间。![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632452977336-ac436b5b-56b7-488e-823e-ee9a0fb6c595.png)
+2. 为了在文件中找到一个特定的键，你**不再需要保存内存中所有键**的索引。因为是有序的，可以先查找出键所处的范围，然后就找到这个键所在的偏移量的区间。比如可以从 handbag 和 handsome 的偏移量找到 handiwork 的区间。![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632452977336-ac436b5b-56b7-488e-823e-ee9a0fb6c595.png)
 #### 构建和维护SSTables
 如何让数据首先被按键排序呢？
 
@@ -168,7 +170,7 @@ LSM 树：在 LevelDB 和 RocksDB 使用。
 - 这种设计更接近于底层硬件，因为磁盘也被安排在固定大小的块中。
 
 每个页面都可以使用地址或位置来标识，这允许一个页面引用另一个页面 —— 类似于指针，但在磁盘而不是在内存中。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632454300338-53ace800-2111-4f4c-9c85-8e80f5141a49.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632454300338-53ace800-2111-4f4c-9c85-8e80f5141a49.png)
 查找过程：
 
 - 一个页面会被指定为B树的根；在索引中查找一个键时，就从这里开始。
@@ -185,7 +187,7 @@ LSM 树：在 LevelDB 和 RocksDB 使用。
 - 找到其范围包含新键的页面，并将其添加到该页面。
 - 如果页面中没有足够的可用空间容纳新键，则将其分成两个半满页面，并更新父页面以解释键范围的新分区。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632454570927-3c4d2a5e-77f8-43b0-afb9-2602ef88eeb1.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632454570927-3c4d2a5e-77f8-43b0-afb9-2602ef88eeb1.png)
 
 删除过程：
 
@@ -418,7 +420,7 @@ Lucene
 - 数据仓库包含公司各种OLTP系统中所有的只读数据副本。
 - 从OLTP数据库中提取数据（使用定期的数据转储或连续的更新流），转换成适合分析的模式，清理并加载到数据仓库中。将数据存入仓库的过程称为“**抽取-转换-加载（ETL）**”
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632715409651-1b72017d-b1a2-4267-aa37-1c28764a152c.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632715409651-1b72017d-b1a2-4267-aa37-1c28764a152c.png)
 
 - 使用单独的数据仓库，而不是直接查询OLTP系统进行分析的一大优势是数据仓库可针对分析访问模式进行优化。上文的索引不适合数据仓库，需要单独的存储引擎。
 #### OLTP数据库和数据仓库之间的分歧
@@ -438,7 +440,7 @@ Lucene
 - 事实表的每一行代表在特定时间发生的事件（这里，每一行代表客户购买的产品）。
 - 周围是维度表。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632715892111-dd58f6a6-d871-4753-9390-25ffe75b504e.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632715892111-dd58f6a6-d871-4753-9390-25ffe75b504e.png)
 
 - 事实表可能非常大，有万亿行和数PB的数据，列通常超过 100 列。
 - 被称为“星型模式”是因为**事实表在中间，维度表在周围**，像星星一样。
@@ -455,14 +457,14 @@ Lucene
 - 不是把每一行的值存储在一起，而是将每一列的所有值存放在一起。
 - 面向列的存储布局依赖于每个列文件包含相同顺序的行。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632716431953-edc86f6a-2e58-48ff-80f9-2cf238193c08.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632716431953-edc86f6a-2e58-48ff-80f9-2cf238193c08.png)
 ### 列压缩
 
 - 除了仅从磁盘加载查询所需的列以外，我们还可以通过压缩数据来进一步降低对磁盘吞吐量的需求。
 - 面向列的存储通常很适合压缩。
 
 位图编码
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632718975070-7c176c9a-26b2-4a01-af9d-3327643b766e.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632718975070-7c176c9a-26b2-4a01-af9d-3327643b766e.png)
 
 - 当 n 非常大，大部分位图中将会有很多的零（我们说它们是稀疏的）。
 - 位图可以另外进行游程编码，这可以使列的编码非常紧凑。
@@ -508,7 +510,7 @@ Lucene
 - 数据仓库查询通常涉及一个聚合函数，如SQL中的COUNT，SUM，AVG，MIN或MAX。
 - 创建这种缓存的一种方式是物化视图（Materialized View）。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632720943485-77033dbf-9b64-4c79-87ca-40a6e1554a93.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632720943485-77033dbf-9b64-4c79-87ca-40a6e1554a93.png)
 
 - 物化数据立方体的优点是某些查询变得非常快，因为它们已经被有效地预先计算了。
 

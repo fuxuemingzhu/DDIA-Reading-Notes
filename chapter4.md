@@ -1,7 +1,7 @@
 作者：负雪明烛
 时间：2021 年 10 月 9 日
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632798565569-b379bd10-0ffe-4ea4-98d2-b9641eea1eb8.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632798565569-b379bd10-0ffe-4ea4-98d2-b9641eea1eb8.png)
 应用程序总是增增改改。
 修改程序大多数情况下也在修改存储的数据。
 
@@ -66,7 +66,7 @@ JSON 字符串是：
 }
 ```
 MessagePack 编码的 Json 举例：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632801011597-49f06a44-2195-4e80-a553-6df45cc56595.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632801011597-49f06a44-2195-4e80-a553-6df45cc56595.png)
 二进制编码长度为66个字节，仅略小于文本JSON编码所取的81个字节（删除了空白)。
 
 ### Thrift与Protocol Buffers
@@ -102,7 +102,7 @@ Thrift 编码格式
 
 BinaryProtocol 
 - 对上面的信息编码只需要59个字节
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632883956568-7daf5a24-3687-47cf-ba93-777ebbcd843a.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632883956568-7daf5a24-3687-47cf-ba93-777ebbcd843a.png)
 
 - 每个字段都有一个类型注释（用于指示它是一个字符串，整数，列表等），还可以根据需要指定长度（字符串的长度，列表中的项目数） 。
 - 最大的区别是没有字段名，而只有字段标签，即数字 1，2，3，就像别名。
@@ -114,14 +114,14 @@ CompactProtocol
 - 相同的信息打包成只有 34 个字节
 - 将数字 1337 编码成为 2 个字节，每个字节的最高位标识是否还有更多的字节。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632884216683-2e14ff02-a4cf-4128-a19e-15f5a01b9438.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632884216683-2e14ff02-a4cf-4128-a19e-15f5a01b9438.png)
 
 Protocol Buffers
 
 - 只有一种二进制编码格式，与Thrift的CompactProtocol非常相似。 
 - 同样的记录塞进了33个字节中。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632884552029-9a9d3116-1fa3-4710-bd36-0df7a0f44d9b.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632884552029-9a9d3116-1fa3-4710-bd36-0df7a0f44d9b.png)
 字段是否为必须？
 
 - 如果字段没有设置值，则从编码记录中省略。
@@ -173,7 +173,7 @@ record Person {
 - Avro二进制编码只有32个字节长，最紧凑的。
 - 编码知识连在一起的值，不能识别字段和数据类型。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632886831122-aaed33a8-e623-4dc1-9891-62a07e6547ef.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632886831122-aaed33a8-e623-4dc1-9891-62a07e6547ef.png)
 
 - 必须按照顺序遍历字段才能解码。
 - 编码和解码必须使用完全相同的模式。
@@ -182,7 +182,7 @@ record Person {
 - Avro的关键思想是Writer模式和Reader模式不必是相同的 - 他们只需要兼容。
 - 当数据解码（读取）时，Avro库通过并排查看Writer模式和Reader模式并将数据从Writer模式转换到Reader模式来解决差异。（即数据读取的时候，会对比 Writer模式 和 Reader模式 的字段，然后就知道怎么读了）
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1632887145105-0da3eac4-c1f8-49d9-bc31-a92238f92625.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1632887145105-0da3eac4-c1f8-49d9-bc31-a92238f92625.png)
 #### 模式演变规则
 
 - 为了保持兼容性，您只能添加或删除具有默认值的字段。 
@@ -237,7 +237,7 @@ record Person {
 - 假设增加字段，那么较新的代码会写入把该值吸入数据库。而旧版本的代码将读取记录，理想的行为是旧代码保持领域完整。
 - 用旧代码读取并重新写入数据库时，有可能会导致数据丢失。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1633665482803-0f0f81b1-9abc-4171-b532-577637eecfe6.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1633665482803-0f0f81b1-9abc-4171-b532-577637eecfe6.png)
 #### 在不同的时间写入不同的值
 
 - 单一的数据库中，可能有一些值是五毫秒前写的，而一些值是五年前写的。

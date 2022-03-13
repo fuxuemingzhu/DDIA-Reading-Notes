@@ -1,6 +1,6 @@
 作者：负雪明烛
 时间：2021 年 9 月 8 日
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1630636204671-f3b0df8c-126c-425a-bbfb-af410ca09a0d.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1630636204671-f3b0df8c-126c-425a-bbfb-af410ca09a0d.png)
 数据模型可能是软件开发中最重要的部分了，因为它们的影响如此深远：不仅仅影响着软件的编写方式，而且影响着我们的**解题思路**。
 一个复杂的应用程序可能会有更多的中间层次，比如基于API的API，不过基本思想仍然是一样的：每个层都通过提供一个明确的数据模型来隐藏更低层次中的复杂性。这些抽象允许不同的人群有效地协作。
 
@@ -21,9 +21,9 @@
 1. Hibernate这样的 **对象关系映射（ORM object-relational mapping）** 框架可以减少这个转换层所需的样板代码的数量，但是它们不能完全隐藏这两个模型之间的差异。
 1. 对于一份简历而言，关系型模型需要一对多（比如工作经历）。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1630640250504-01ef3f97-39be-4c23-9a9e-ce17c1cde6a9.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1630640250504-01ef3f97-39be-4c23-9a9e-ce17c1cde6a9.png)
 而表述这样的简历，使用 JSON 是非常合适的。JSON 比多表模式有更好的局部性，可以一次查询出一个用户的所有信息。JSON 其实是一棵树。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1630640396753-c7fed755-b19b-4948-9c84-53d232548633.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1630640396753-c7fed755-b19b-4948-9c84-53d232548633.png)
 
 ### 多对一和多对多的关系
 
@@ -36,9 +36,9 @@
 哪怕最开始的应用适合无连接的文档模型，但是随着功能添加，数据会变得更加互联，比如对简历修改：
 
 1. 组织和学校作为实体：假如组织和学校有主页
-   1. ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1630641413918-4cee1b5a-9bd2-4375-b86a-8d6d7183ee34.png)
+   1. ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1630641413918-4cee1b5a-9bd2-4375-b86a-8d6d7183ee34.png)
 2. 推荐：给别人做推荐，当别人的信息更改的时候，所有地方要同步更新。
-   1. ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1630641447595-4315fa0f-8338-4596-88d1-e423e040ac62.png)
+   1. ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1630641447595-4315fa0f-8338-4596-88d1-e423e040ac62.png)
 
 ### 文档数据库是否在重蹈覆辙？
 20 世纪 70 年代，最受欢迎的是**层次模型（hierarchical model）**，它与文档数据库使用的JSON模型有一些惊人的相似之处。它将所有数据表示为嵌套在记录中的记录树。虽然能处理一对多的关系，但是很难应对多对多的关系，并且不支持链接。
@@ -129,7 +129,7 @@
    1. **顶点（vertices）**（也称为**节点（nodes）** 或**实体（entities）**）
    1. **边（edges）**（ 也称为**关系（relationships）**或**弧 （arcs）** ）。
 5. 举例：**_社交图谱，网络图谱，公路或铁路网络_**
-5. **图数据结构示例（以社交网络为例）**![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631070760026-da55263d-f3df-4818-aec1-62259efbac42.png)
+5. **图数据结构示例（以社交网络为例）**![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631070760026-da55263d-f3df-4818-aec1-62259efbac42.png)
 5. 存储方式：属性图，三元组
 ### 属性图
 在属性图模型中，每个**顶点（vertex）**包括：
@@ -221,7 +221,7 @@ SELECT ?personName WHERE {
 ```
 ### 基础：Datalog
 **Datalog**是比SPARQL或Cypher更古老的语言，在20世纪80年代被学者广泛研究
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1631072183187-f916d4b7-bee4-4df2-b330-42eadf258625.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1631072183187-f916d4b7-bee4-4df2-b330-42eadf258625.png)
 
 ## 本章小结
 在历史上，数据最开始被表示为一棵大树（层次数据模型），但是这不利于表示多对多的关系，所以发明了关系模型来解决这个问题。
