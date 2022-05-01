@@ -1,6 +1,6 @@
 作者：负雪明烛
 时间：2021 年 10 月 21 日
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1634785575124-a8273aa8-f242-40b3-ac7d-5f7ae6a5c36b.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1634785575124-a8273aa8-f242-40b3-ac7d-5f7ae6a5c36b.png)
 为什么有事务？
 
 - 分布式数据系统，可能会出各种错误。
