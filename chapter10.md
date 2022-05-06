@@ -1,7 +1,7 @@
 作者：负雪明烛
 时间：2021 年 12 月 9 日
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1639018524307-c06e6686-3f3b-421f-bcab-363c51813e8c.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1639018524307-c06e6686-3f3b-421f-bcab-363c51813e8c.png)
 本书的前九章，讨论的都是请求、查询，以及相应的响应和结果。是**在线**系统，关注响应时间。
 三种不同类型的系统：
 _**服务（在线系统）**_
@@ -189,7 +189,7 @@ MapReduce 和 Unix 管道的主要区别？
 - Mapper和Reducer一次只能处理一条记录；它们不需要知道它们的输入来自哪里，或者输出去往什么地方，所以框架可以处理在机器之间移动数据的复杂性。
 
 **Hadoop MapReduce作业中的数据流**
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1639623613991-4ad61316-5e82-43b3-9427-1dcc4e2e1413.png)如上图
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1639623613991-4ad61316-5e82-43b3-9427-1dcc4e2e1413.png)如上图
 
 Mapper 的分区？
 
@@ -270,7 +270,7 @@ MapReduce 作业怎么找到想要读的部分数据？
 
 ### 示例：用户活动事件分析
 一个批处理作业中join 的典型例子。左侧是事件日志，描述登录用户在网站上做的事情（称为**活动事件（activity events）** 或**点击流数据（clickstream data）**），右侧是用户数据库。 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1639625654252-da9094fa-a453-4609-a2cd-f1b107496c72.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1639625654252-da9094fa-a453-4609-a2cd-f1b107496c72.png)
 **分析任务**需要将用户活动与用户档案信息相关联：例如，如果档案包含用户的年龄或出生日期，系统就可以确定哪些页面更受哪些年龄段的用户欢迎。
 
 有什么简单方法实现上述任务？
@@ -297,7 +297,7 @@ Mapper的目的是从每个输入记录中提取一对键值，在上面 hadoop�
 - 而另一组Mapper将会扫过用户数据库（提取用户ID作为键，用户的出生日期作为值）。
 
 过程如下所示：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1639711248899-42b2ff3a-3320-46fa-9720-bb1ed365cd53.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1639711248899-42b2ff3a-3320-46fa-9720-bb1ed365cd53.png)
 join 过程中怎么做分区？
 
 - 当MapReduce框架通过**键**对Mapper输出进行分区，然后对**键值对**进行排序时，效果是具有**相同ID的所有活动事件和用户记录在Reducer输入中彼此相邻**。（在上图中，三个104分区到了parition 1，173 和 103 分到 partition 2）

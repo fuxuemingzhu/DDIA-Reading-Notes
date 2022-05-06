@@ -89,7 +89,7 @@ ACID 的原子性
 - 数据库确保当多个事务被提交时，结果与它们串行运行（一个接一个）是一样的，尽管实际上它们可能是并发运行的
 
 **图 7-1 两个客户之间的竞争状态同时递增计数器**
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635133207000-58c191b8-87e3-49e5-8f61-317c316ea935.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635133207000-58c191b8-87e3-49e5-8f61-317c316ea935.png)
 然而实践中很少会使用可串行的隔离，因为它有性能损失。
 
 #### 持久性
@@ -133,9 +133,9 @@ SELECT COUNT（*）FROM emails WHERE recipient_id = 2 AND unread_flag = true
 - 如果邮件太多，觉得查询太慢，于是用了单独的字段存储未读邮件的数量。现在每当一个新消息写入时，必须也增长未读计数器，每当一个消息被标记为已读时，也必须减少未读计数器。
 - 异常情况：
    - 邮件列表里显示有未读消息，但计数器显示为零未读消息，因为计数器增长还没有发生
-   - 图 7-2 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635134558609-91c15b88-848b-4a61-8c6f-abe513d0f1e6.png)
+   - 图 7-2 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635134558609-91c15b88-848b-4a61-8c6f-abe513d0f1e6.png)
 - 为了满足原子性：插入邮件和更新未读邮件数目需要状态一致，要么都成功，要么都失败（回滚）：
-   - 图 7-3 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635134670445-25e565a2-c219-4d0f-8160-0203494e4d4b.png)
+   - 图 7-3 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635134670445-25e565a2-c219-4d0f-8160-0203494e4d4b.png)
 
 多对象事务写入方法？
 
@@ -232,7 +232,7 @@ SELECT COUNT（*）FROM emails WHERE recipient_id = 2 AND unread_flag = true
 - 设想一个事务已经将部分数据写入数据库，但事务还没有提交或中止。另一个事务可以看到未提交的数据吗？如果是的话，那就叫做**脏读（dirty reads）。**
 - 在**读已提交**隔离级别运行的事务必须防止**脏读**。这意味着事务的任何写入操作只有在该事务成功提交后，才能被其他人看到（并且所有的写入操作都会立即变得可见）。
    - 比如 user1 设置了 `x=3`， 但是直到 user1 的事务提交前， user2 的 `get x` 依然返回旧值 2，
-   - 图 7-4 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635219379828-61b7614d-e9c7-44e0-aa7f-f92d7c488a41.png)
+   - 图 7-4 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635219379828-61b7614d-e9c7-44e0-aa7f-f92d7c488a41.png)
 
 
 
@@ -252,7 +252,7 @@ SELECT COUNT（*）FROM emails WHERE recipient_id = 2 AND unread_flag = true
 - 如果事务更新多个对象，脏写会导致非预期的错误结果。
    - Alice 和 Bob 同事购买一辆车，买车需要两次数据库写入：商品列表更新、开发票。
    - 下图中，Alice 先更新了商品列表，但是被 Bob 覆盖了商品列表；Bob 先更新了开发票，但是被 Alice 覆盖。
-   - ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635224733944-9dd6ebe8-3dd2-4388-9168-316e941b4de6.png)
+   - ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635224733944-9dd6ebe8-3dd2-4388-9168-316e941b4de6.png)
 - 但是，读已提交不能防止本章第一个图中的两个计数器增量之间的竞争状态。第二次写入在第一个事务提交后，所以它不是一个脏写。但结果仍然不正确。后文中“防止更新丢失”中将探讨如何使这种计数器安全递增。
 
 #### 实现读已提交
@@ -294,7 +294,7 @@ SELECT COUNT（*）FROM emails WHERE recipient_id = 2 AND unread_flag = true
 但，仍然有问题可能导致并发错误：
 
 - **图7-6 读取偏差：Alice观察数据库处于不一致的状态**
-- ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635306474043-6e0a9c85-9099-4a49-9fab-b7b09a802be7.png)
+- ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635306474043-6e0a9c85-9099-4a49-9fab-b7b09a802be7.png)
    - Alice 有 1000 美元，分为两个账户
    - 先查了账户 1，发现有 500 块
    - 一个事务把账户 2 的钱转了 100 到账户 1
@@ -350,7 +350,7 @@ _**分析查询和完整性检查**_
 - 下图是 PostgreSQL中实现基于MVCC的快照隔离（其他实现类似）
 - 当一个事务开始时，它被赋予一个唯一的，永远增长的事务ID（txid）。
 - 每当事务向数据库写入任何内容时，它所写入的数据都会被标记上写入者的事务ID。
-- ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635394035306-e144c5ea-a9a1-4205-99c2-41b7dd495d41.png)
+- ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635394035306-e144c5ea-a9a1-4205-99c2-41b7dd495d41.png)
 - 说明：
    - 表中的每一行都有一个 created_by 字段，其中包含将该行插入到表中的的事务ID。
    - 此外，每行都有一个 deleted_by 字段，最初是空的。
@@ -526,7 +526,7 @@ UPDATE wiki_pages SET content = '新内容'
 
 - 背景：医院通常会同时要求几位医生待命，但底线是至少有一位医生在待命。医生可以放弃他们的班次（例如，如果他们自己生病了），只要至少有一个同事在这一班中继续工作。
 - 场景：Alice和Bob是两位值班医生，同时请假：
-   - ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635735299536-ae8150cd-766c-497b-ad3a-aea419847386.png)
+   - ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635735299536-ae8150cd-766c-497b-ad3a-aea419847386.png)
    - 应用首先检查是否有两个或以上的医生正在值班；
       - 如果是的话，它就假定一名医生可以安全地休班。由于数据库使用快照隔离，两次检查都返回 2 ，所以两个事务都进入下一个阶段。
       - Alice更新自己的记录休班了，而Bob也做了一样的事情。
@@ -687,7 +687,7 @@ _**防止双重开支**_
 - **交互式的事务中，为了提高吞吐量，必须允许数据库并发处理**。
 - 采用单线程串行事务处理的系统不允许交互式的多语句事务。这就要求应用程序必须提前将整个事务代码作为**存储过程**提交给数据库。
 - 下图表示 交互式事务和存储过程之间的区别（使用图7-8的示例事务）
-- ![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635738731596-8923d4a2-057e-4b80-8322-b9946c900871.png)
+- ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635738731596-8923d4a2-057e-4b80-8322-b9946c900871.png)
 
 #### 存储过程的优点和缺点
 存储过程名声不好的原因：
@@ -880,7 +880,7 @@ WHERE room_id = 123 AND
 - 快照隔离通常是通过多版本并发控制（MVCC；见图7-10）来实现的。当一个事务从MVCC数据库中的一致快照读时，它将忽略取快照时尚未提交的任何其他事务所做的写入。
 - **图7-10 检测事务何时从MVCC快照读取过时的值（关于医生值班请假的例子）**
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635826339237-2bccecf0-4471-4af9-ae13-522a77cf7d67.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635826339237-2bccecf0-4471-4af9-ae13-522a77cf7d67.png)
 
 如何避免？
 
@@ -895,7 +895,7 @@ WHERE room_id = 123 AND
 
 - **图7-11 在可串行化快照隔离中，检测一个事务何时修改另一个事务的读取。**
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/1265500/1635826605207-38b36e4b-602d-4f01-a4b4-ead48bfc1a89.png)
+![image.png](https://picture-bed-1251805293.file.myqcloud.com/1635826605207-38b36e4b-602d-4f01-a4b4-ead48bfc1a89.png)
 
 实现方法
 
