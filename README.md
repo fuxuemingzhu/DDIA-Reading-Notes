@@ -154,6 +154,8 @@
 找到了油管上的一个 DDIA 读书分享，大概讲了这本书每章节的主要内容。不过分享者的普通话不是太好，有兴趣可以看下，[https://www.youtube.com/watch?v=5G_JHHSvmS0](https://www.youtube.com/watch?v=5G_JHHSvmS0)
 ![image.png](https://picture-bed-1251805293.file.myqcloud.com/1640425712169-08344807-e200-45d1-b4dc-2b3d4d02ea11.png)
 
+B 站上也有个 DDIA 的逐章分享，根据 up 在分布式系统工业界的一些经验，结合书中的内容，逐章进行分享: [https://www.bilibili.com/video/BV1bY411L7HA](https://www.bilibili.com/video/BV1bY411L7HA)
+
 ### 第三章辅助资料
 
 第三章讲解数据存储与检索，我们常说的 mysql，leveldb 的基本原理都能在这里找到。
