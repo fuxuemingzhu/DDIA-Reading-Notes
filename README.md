@@ -28,7 +28,7 @@
 
  [**第十二章：数据系统的未来**](chapter12.md) 
 
-也可以在语雀上阅读：[《数据密集型应用系统设计》读书笔记](https://www.yuque.com/fuxuemingzhu/cdpqne)
+更优雅的阅读方式：[《数据密集型应用系统设计》读书笔记](https://fuxuemingzhu.cn/ddia/)
 
 # 推荐
 
